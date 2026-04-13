@@ -1,0 +1,145 @@
+---
+const services = [
+  {
+    id: 'ssg',
+    icon: '⚡',
+    tag: 'Más popular',
+    title: 'Sitio Estático (SSG)',
+    subtitle: '¿Qué es esto, en palabras simples?',
+    description:
+      'Imagina una página que ya está completamente "preparada" antes de que alguien la visite — como un libro ya impreso. No necesita procesar nada en el momento: se carga al instante, nunca falla y es prácticamente imposible de hackear.',
+    benefits: [
+      'Carga en menos de 1 segundo',
+      'Seguridad impenetrable',
+      'Hosting de bajo costo',
+      'Posicionamiento SEO óptimo',
+    ],
+    note: 'Ideal para negocios locales, portafolios y marcas personales',
+  },
+  {
+    id: 'landing',
+    icon: '🎯',
+    tag: 'Más efectivo',
+    title: 'Landing Page de Conversión',
+    subtitle: 'Tu mejor vendedor, disponible 24/7',
+    description:
+      'Una Landing Page es una página diseñada con un único objetivo: convertir al visitante en un cliente o contacto real. Cada título, imagen y botón está estratégicamente colocado para guiar al usuario a tomar acción.',
+    benefits: [
+      'Diseño orientado a conversión',
+      'Integración con WhatsApp y correo',
+      'Código QR personalizado incluido',
+      '1 año de hosting y garantía técnica',
+    ],
+    note: 'Incluye mantenimiento y soporte durante el primer año',
+  },
+  {
+    id: 'fullstack',
+    icon: '⚙️',
+    tag: 'A medida',
+    title: 'Aplicación Fullstack',
+    subtitle: 'Para proyectos de mayor complejidad',
+    description:
+      '¿Necesitas cuentas de usuario, pagos online, un panel de administración o integraciones con otros sistemas? Desarrollamos soluciones completas — tanto el lado visual (Front-end) como la lógica de negocio detrás (Back-end).',
+    benefits: [
+      'Desarrollo Front-end + Back-end',
+      'Base de datos personalizada',
+      'Panel de administración propio',
+      'APIs e integraciones externas',
+    ],
+    note: 'Requiere cotización a medida • Contáctanos para más información',
+  },
+];
+---
+
+<section id="servicios" class="section-has-orbs py-24 md:py-32 px-5 md:px-8" style="background: var(--bg);">
+
+  <!-- Ambient background orbs -->
+  <div class="section-orbs" aria-hidden="true">
+    <div class="blur-orb" style="width:500px;height:500px;background:#6C63FF;top:-100px;left:-150px;"></div>
+    <div class="blur-orb orb-b" style="width:350px;height:350px;background:#22D3EE;bottom:-80px;right:-100px;"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-14 md:mb-20">
+      <p class="section-label reveal">Nuestros Servicios</p>
+      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-4 reveal reveal-delay-1" style="color: var(--text);">
+        Lo que construimos para ti
+      </h2>
+      <p class="max-w-xl mx-auto text-base md:text-lg reveal reveal-delay-2" style="color: var(--muted);">
+        Sin tecnicismos innecesarios. Te explicamos exactamente qué recibes y cómo cada servicio puede hacer crecer tu negocio.
+      </p>
+    </div>
+
+    <!-- Service cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+      {services.map((s, i) => (
+        <div
+          id={`service-card-${s.id}`}
+          class={`glow-card p-7 md:p-8 flex flex-col reveal reveal-delay-${i + 1}`}
+        >
+          <!-- Icon + tag -->
+          <div class="flex items-start justify-between mb-5">
+            <div class="text-4xl" aria-hidden="true">{s.icon}</div>
+            <span
+              class="text-xs font-semibold px-3 py-1 rounded-full"
+              style="background: rgba(108,99,255,0.12); color: var(--accent); border: 1px solid rgba(108,99,255,0.2);"
+            >
+              {s.tag}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="font-display font-bold text-xl md:text-2xl mb-1" style="color: var(--text);">{s.title}</h3>
+          <p class="text-sm mb-3 font-medium" style="color: var(--accent);">{s.subtitle}</p>
+
+          <!-- Description -->
+          <p class="text-sm md:text-base leading-relaxed mb-6" style="color: var(--muted);">{s.description}</p>
+
+          <!-- Benefits -->
+          <ul class="flex flex-col gap-2 mb-7 flex-1">
+            {s.benefits.map(b => (
+              <li class="flex items-start gap-2 text-sm" style="color: var(--muted);">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="mt-0.5 flex-shrink-0">
+                  <path d="M5 10L8.5 13.5L15 7" stroke="#6C63FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {b}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Note footer -->
+          <div
+            class="mt-auto pt-5 text-xs font-medium"
+            style="border-top: 1px solid var(--border); color: var(--muted);"
+          >
+            {s.note}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA band -->
+    <div class="mt-14 rounded-2xl p-7 md:p-10 text-center reveal reveal-delay-2"
+      style="background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(34,211,238,0.07)); border: 1px solid rgba(108,99,255,0.2);"
+    >
+      <p class="font-display font-bold text-xl md:text-2xl mb-2" style="color: var(--text);">
+        ¿No sabes cuál servicio necesitas?
+      </p>
+      <p class="text-sm md:text-base mb-6" style="color: var(--muted);">
+        Cuéntanos tu idea y te ayudamos a encontrar la solución perfecta para tu presupuesto y objetivos.
+      </p>
+      <a
+        href="https://wa.me/573212545768?text=Hola%2C%20quisiera%20asesoría%20sobre%20qué%20tipo%20de%20sitio%20web%20necesito."
+        target="_blank"
+        rel="noopener noreferrer"
+        id="services-consult-cta"
+        class="btn-primary"
+      >
+        Pide una asesoría gratuita
+      </a>
+    </div>
+
+  </div>
+</section>

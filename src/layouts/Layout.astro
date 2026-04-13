@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Velaris — Ingeniería Web de Vanguardia',
+  description = 'Transformamos negocios con tecnología web de alto impacto. Sitios estáticos ultrarrápidos, landing pages de conversión y apps fullstack a medida. Universidad Tecnológica de Pereira.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080B10" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="icon" type="image/png" href="/images/velaris_black_logo_no_background.png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Theme ripple overlay -->
+    <div id="theme-ripple"></div>
+
+    <slot />
+
+    <!-- Prevent dark-mode flash -->
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem('velaris-theme');
+        var root = document.documentElement;
+        if (saved === 'light') {
+          root.classList.remove('dark');
+        } else {
+          root.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <!-- Global: scroll reveals -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function () {
+        var reveals = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { observer.observe(el); });
+      });
+    </script>
+  </body>
+</html>
+

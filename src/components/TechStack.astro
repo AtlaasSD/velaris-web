@@ -1,0 +1,106 @@
+---
+const techs = [
+  { name: 'Astro',       emoji: '🚀', desc: 'Framework SSG de nueva generación' },
+  { name: 'Tailwind CSS',emoji: '🎨', desc: 'Estilos modernos a máxima velocidad' },
+  { name: 'JavaScript',  emoji: '⚡', desc: 'Lógica web moderna y dinámica' },
+  { name: 'React',       emoji: '⚛️', desc: 'Interfaces interactivas de alto nivel' },
+  { name: 'Next.js',     emoji: '▲',  desc: 'Apps web fullstack escalables' },
+  { name: 'Node.js',     emoji: '🟢', desc: 'Back-end veloz y eficiente' },
+  { name: 'Git',         emoji: '📦', desc: 'Control de versiones profesional' },
+  { name: 'Netlify',     emoji: '☁️', desc: 'Despliegue global instantáneo' },
+  { name: 'Cloudflare',  emoji: '🛡️', desc: 'CDN de clase mundial' },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'Concepción Estratégica',
+    desc: 'Entendemos tu negocio, tu audiencia y tus objetivos para diseñar la solución ideal antes de escribir una sola línea de código.',
+  },
+  {
+    n: '02',
+    title: 'Diseño UI/UX',
+    desc: 'Creamos interfaces que se ven increíbles y guían al usuario de forma natural hacia la acción que tu negocio necesita.',
+  },
+  {
+    n: '03',
+    title: 'Desarrollo de Alto Rendimiento',
+    desc: 'Construimos con el stack más moderno para garantizar velocidad extrema, máxima seguridad y escalabilidad a largo plazo.',
+  },
+  {
+    n: '04',
+    title: 'Despliegue Global',
+    desc: 'Tu sitio llega a servidores de clase mundial en minutos. Accesible desde cualquier parte del planeta, sin interrupciones.',
+  },
+  {
+    n: '05',
+    title: 'Soporte & Mantenimiento',
+    desc: 'No desaparecemos después de entregar. Te acompañamos con planes de soporte para mantener tu sitio siempre actualizado y seguro.',
+  },
+];
+---
+
+<section id="tecnologia" class="section-has-orbs py-24 md:py-32 px-5 md:px-8 overflow-hidden" style="background: var(--surface);">
+
+  <!-- Ambient background orbs -->
+  <div class="section-orbs" aria-hidden="true">
+    <div class="blur-orb orb-b" style="width:450px;height:450px;background:#22D3EE;top:-80px;right:-120px;"></div>
+    <div class="blur-orb orb-c" style="width:320px;height:320px;background:#6C63FF;bottom:-60px;left:-80px;"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-14 md:mb-20">
+      <p class="section-label reveal">Tecnología</p>
+      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-4 reveal reveal-delay-1" style="color: var(--text);">
+        Nuestro arsenal tecnológico
+      </h2>
+      <p class="max-w-xl mx-auto text-base md:text-lg reveal reveal-delay-2" style="color: var(--muted);">
+        Usamos las mismas herramientas que emplean las empresas tech más grandes del mundo — solo que las ponemos a trabajar para tu negocio.
+      </p>
+    </div>
+
+    <!-- Tech marquee (auto-scrolling) -->
+    <div class="marquee-outer mb-20 reveal reveal-delay-2">
+      <div class="marquee-track">
+        <!-- Duplicated for seamless infinite scroll -->
+        {[...techs, ...techs].map((t, i) => (
+          <div
+            key={i}
+            class="flex-shrink-0 mx-3 flex items-center gap-2.5 px-5 py-3 rounded-xl"
+            style="background: var(--card); border: 1px solid var(--border);"
+          >
+            <span class="text-2xl" aria-hidden="true">{t.emoji}</span>
+            <div>
+              <p class="font-display font-semibold text-sm leading-tight" style="color: var(--text);">{t.name}</p>
+              <p class="text-xs" style="color: var(--muted);">{t.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Workflow section -->
+    <div class="text-center mb-12">
+      <p class="section-label reveal">Nuestro Proceso</p>
+      <h3 class="font-display font-black text-2xl sm:text-3xl md:text-4xl reveal reveal-delay-1" style="color: var(--text);">
+        De la idea al resultado en pasos claros
+      </h3>
+    </div>
+
+    <!-- Steps grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      {steps.map((s, i) => (
+        <div class={`glow-card p-6 flex flex-col gap-4 reveal reveal-delay-${(i % 4) + 1}`} id={`step-${s.n}`}>
+          <div class="step-num">{s.n}</div>
+          <div>
+            <h4 class="font-display font-bold text-base mb-2 leading-snug" style="color: var(--text);">{s.title}</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
