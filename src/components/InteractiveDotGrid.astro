@@ -1,0 +1,97 @@
+---
+// InteractiveDotGrid.astro
+---
+<canvas class="interactive-dot-grid absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true" style="z-index: 0;"></canvas>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    var canvases = document.querySelectorAll('.interactive-dot-grid');
+    canvases.forEach(function(canvas) {
+      var ctx = canvas.getContext('2d');
+      var parent = canvas.parentElement;
+      var W, H, dots = [];
+      var mouse = { x: -9999, y: -9999 };
+      var SPACING = 22; // Distance between dots
+      
+      function init() {
+        W = canvas.width = parent.offsetWidth;
+        H = canvas.height = parent.offsetHeight;
+        dots = [];
+        for (var x = SPACING/2; x < W; x += SPACING) {
+          for (var y = SPACING/2; y < H; y += SPACING) {
+            // Adds organic jitter to the grid positions so it's not a perfect box grid
+            var jx = x + (Math.random() - 0.5) * (SPACING * 0.5);
+            var jy = y + (Math.random() - 0.5) * (SPACING * 0.5);
+            dots.push({ x: jx, y: jy, ox: jx, oy: jy });
+          }
+        }
+      }
+      init();
+      window.addEventListener('resize', init);
+      
+      parent.addEventListener('mousemove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      parent.addEventListener('mouseleave', function() {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+        var isDark = document.documentElement.classList.contains('dark');
+        
+        // Base subtle color
+        var colorBase   = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.15)';
+        // Reaction bright color
+        var colorActive = isDark ? 'rgba(108, 99, 255, 0.9)'   : 'rgba(34, 100, 255, 0.9)';
+
+        for (var i = 0; i < dots.length; i++) {
+          var p = dots[i];
+          var dx = p.ox - mouse.x;
+          var dy = p.oy - mouse.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          
+          var tx = p.ox;
+          var ty = p.oy;
+          var inRange = dist < 200 && dist > 0;
+          
+          if (inRange) {
+            var force = Math.pow((200 - dist) / 200, 1.5);
+            // Points get attracted to nearest concentric rings around the mouse
+            var ringDist = Math.max(30, Math.round(dist / 35) * 35); 
+            var currentDist = dist + (ringDist - dist) * force * 0.85;
+            
+            // Add a swirl angle offset
+            var angle = Math.atan2(dy, dx) + (force * 0.3);
+            
+            tx = mouse.x + Math.cos(angle) * currentDist;
+            ty = mouse.y + Math.sin(angle) * currentDist;
+          }
+          
+          // Easing back to position
+          p.x += (tx - p.x) * 0.15;
+          p.y += (ty - p.y) * 0.15;
+          
+          // Draw
+          ctx.beginPath();
+          var r = inRange ? 1.5 + ((200-dist)/200) * 1.0 : 1.2;
+          ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = inRange ? colorActive : colorBase;
+          // Fade active color out closer to edge of radius
+          if (inRange) {
+            ctx.globalAlpha = 0.3 + 0.7 * ((200 - dist) / 200);
+          } else {
+            ctx.globalAlpha = 1;
+          }
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1; // reset
+        requestAnimationFrame(tick);
+      }
+      tick();
+    });
+  });
+</script>

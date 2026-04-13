@@ -39,7 +39,7 @@
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center reveal reveal-delay-3">
       <a
-        href="https://wa.me/573212545768?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
+        href="https://wa.me/573171509336?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
         target="_blank" rel="noopener noreferrer"
         id="hero-whatsapp-cta" class="btn-primary"
       >
@@ -137,8 +137,8 @@
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = isDark
-        ? 'rgba(108,99,255,' + p.o + ')'
-        : 'rgba(79,70,229,'  + (p.o * 0.85) + ')';
+        ? 'rgba(108,99,255,' + (p.o * 2.0) + ')'
+        : 'rgba(55,48,163,'  + (p.o * 2.5) + ')';
       ctx.fill();
     }
 
@@ -149,13 +149,13 @@
         var ay = particles[i].y - particles[j].y;
         var dist = Math.sqrt(ax * ax + ay * ay);
         if (dist < MDIST) {
-          // Light mode connections are more visible (higher alpha)
-          var alpha = (1 - dist / MDIST) * (isDark ? 0.2 : 0.28);
+          // Both modes get much thicker, darker lines
+          var alpha = (1 - dist / MDIST) * (isDark ? 0.6 : 0.95);
           ctx.beginPath();
           ctx.strokeStyle = isDark
             ? 'rgba(108,99,255,' + alpha + ')'
-            : 'rgba(79,70,229,' + alpha + ')';
-          ctx.lineWidth = 0.7;
+            : 'rgba(55,48,163,' + alpha + ')';
+          ctx.lineWidth = isDark ? 1.0 : 1.8;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
           ctx.stroke();

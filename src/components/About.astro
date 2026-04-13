@@ -5,9 +5,14 @@ const highlights = [
   { icon: '🌐', title: 'Estándares Internacionales', desc: 'Proyectos entregados siguiendo las mejores prácticas de la industria web global.' },
   { icon: '🤝', title: 'Trato Directo', desc: 'Hablas directamente con quienes construyen tu proyecto. Sin intermediarios, sin malentendidos.' },
 ];
+
+import InteractiveDotGrid from './InteractiveDotGrid.astro';
 ---
 
 <section id="nosotros" class="section-has-orbs py-24 md:py-32 px-5 md:px-8" style="background: var(--surface);">
+
+  <!-- Interactive dot grid mapped to this section's background -->
+  <InteractiveDotGrid />
 
   <!-- Ambient background orbs -->
   <div class="section-orbs" aria-hidden="true">

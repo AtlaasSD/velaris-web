@@ -60,7 +60,7 @@
 
       <!-- CTA (desktop) -->
       <a
-        href="https://wa.me/573212545768?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
+        href="https://wa.me/573171509336?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
         target="_blank"
         rel="noopener noreferrer"
         id="nav-cta"
@@ -89,7 +89,7 @@
       <a href="#tecnologia" class="mobile-nav-link text-base font-medium py-2" style="color: var(--muted)">Tecnología</a>
       <a href="#valor" class="mobile-nav-link text-base font-medium py-2" style="color: var(--muted)">Valor</a>
       <a href="#nosotros" class="mobile-nav-link text-base font-medium py-2" style="color: var(--muted)">Nosotros</a>
-      <a href="https://wa.me/573212545768?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
+      <a href="https://wa.me/573171509336?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
         target="_blank" rel="noopener noreferrer" class="btn-primary justify-center">
         Cotiza ahora
       </a>
@@ -127,28 +127,31 @@
     });
   });
 
-  // ── Theme toggle with ripple ─────────────────────────
+  // ── Theme toggle with Shockwave Pulse ────────────────
   var themeBtn = document.getElementById('theme-toggle');
-  var ripple   = document.getElementById('theme-ripple');
+  var rippleContainer = document.getElementById('theme-ripple');
 
-  themeBtn.addEventListener('click', function () {
+  themeBtn.addEventListener('click', function (e) {
     var isDark = document.documentElement.classList.contains('dark');
-    var rect   = themeBtn.getBoundingClientRect();
-    ripple.style.setProperty('--rx', (rect.left + rect.width  / 2) + 'px');
-    ripple.style.setProperty('--ry', (rect.top  + rect.height / 2) + 'px');
-    ripple.style.background = isDark ? '#F8FAFC' : '#080B10';
-    ripple.classList.add('expanding');
-
-    setTimeout(function () {
+    var rect = themeBtn.getBoundingClientRect();
+    
+    var pulse = document.createElement('div');
+    pulse.className = 'ripple-shockwave';
+    pulse.style.setProperty('--rx', (rect.left + rect.width / 2) + 'px');
+    pulse.style.setProperty('--ry', (rect.top + rect.height / 2) + 'px');
+    
+    if (rippleContainer) {
+      rippleContainer.appendChild(pulse);
+    }
+    
+    // Change theme smoothly at approx half the animation duration
+    setTimeout(function() {
       document.documentElement.classList.toggle('dark');
-      localStorage.setItem('velaris-theme',
-        document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    }, 320);
+      localStorage.setItem('velaris-theme', isDark ? 'light' : 'dark');
+    }, 250);
 
-    ripple.addEventListener('animationend', function handler() {
-      ripple.classList.remove('expanding');
-      ripple.style.background = '';
-      ripple.removeEventListener('animationend', handler);
+    pulse.addEventListener('animationend', function() {
+      pulse.remove();
     });
   });
 </script>

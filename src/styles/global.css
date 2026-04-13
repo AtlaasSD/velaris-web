@@ -121,20 +121,29 @@ body {
   transform: translateY(-2px);
 }
 
-/* ─── Theme Ripple ──────────────────────────────────── */
+/* ─── Theme Pulse Wave ────────────────────────────── */
 #theme-ripple {
   position: fixed;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   z-index: 9999;
   pointer-events: none;
-  clip-path: circle(0% at var(--rx, 50%) var(--ry, 50%));
+  overflow: hidden;
 }
-#theme-ripple.expanding {
-  animation: ripple-expand 0.65s cubic-bezier(0.4,0,0.2,1) forwards;
+.ripple-shockwave {
+  position: absolute;
+  top: var(--ry, 50%);
+  left: var(--rx, 50%);
+  width: 250vmax;
+  height: 250vmax;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 40%, rgba(108,99,255,0.4) 50%, rgba(34,211,238,0.4) 60%, transparent 70%);
+  animation: shockwave 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
-@keyframes ripple-expand {
-  from { clip-path: circle(0% at var(--rx) var(--ry)); }
-  to   { clip-path: circle(150vmax at var(--rx) var(--ry)); }
+@keyframes shockwave {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
 }
 
 /* ─── Theme Toggle Button ───────────────────────────── */
@@ -181,7 +190,6 @@ html.dark .theme-toggle-btn:hover svg {
   width: max-content;
   animation: marquee 40s linear infinite;
 }
-.marquee-track:hover { animation-play-state: paused; }
 
 @keyframes marquee {
   from { transform: translateX(0%); }
@@ -243,13 +251,13 @@ html:not(.dark) .hero-vignette {
   position: absolute;
   border-radius: 50%;
   filter: blur(110px);
-  /* Light mode: subtle but visible */
-  opacity: 0.07;
+  /* Light mode: much more visible now */
+  opacity: 0.22;
   animation: float-orb 12s ease-in-out infinite;
 }
 html.dark .blur-orb {
-  /* Dark mode: slightly more visible */
-  opacity: 0.10;
+  /* Dark mode */
+  opacity: 0.18;
 }
 .blur-orb.orb-b { animation-duration: 16s; animation-direction: reverse; }
 .blur-orb.orb-c { animation-duration: 20s; animation-delay: -5s; }
@@ -265,7 +273,7 @@ html.dark .blur-orb {
   position: relative;
   overflow: hidden;
 }
-.section-has-orbs > *:not(.section-orbs) {
+.section-has-orbs > *:not(.section-orbs):not(.interactive-dot-grid) {
   position: relative;
   z-index: 1;
 }

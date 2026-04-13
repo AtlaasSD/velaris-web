@@ -38,9 +38,14 @@ const steps = [
     desc: 'No desaparecemos después de entregar. Te acompañamos con planes de soporte para mantener tu sitio siempre actualizado y seguro.',
   },
 ];
+
+import InteractiveDotGrid from './InteractiveDotGrid.astro';
 ---
 
 <section id="tecnologia" class="section-has-orbs py-24 md:py-32 px-5 md:px-8 overflow-hidden" style="background: var(--surface);">
+
+  <!-- Interactive dot grid mapped to this section's background -->
+  <InteractiveDotGrid />
 
   <!-- Ambient background orbs -->
   <div class="section-orbs" aria-hidden="true">
