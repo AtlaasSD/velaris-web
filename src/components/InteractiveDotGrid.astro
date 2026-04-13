@@ -27,7 +27,13 @@
         }
       }
       init();
-      window.addEventListener('resize', init);
+      var lastW = window.innerWidth;
+      window.addEventListener('resize', function() {
+        var newW = window.innerWidth;
+        if (newW < 768 && newW === lastW) return; // Prevent rebuilding array horizontally on mobile scroll height changes
+        lastW = newW;
+        init();
+      });
       
       parent.addEventListener('mousemove', function(e) {
         var rect = canvas.getBoundingClientRect();
