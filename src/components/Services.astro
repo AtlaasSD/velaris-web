@@ -3,47 +3,47 @@ const services = [
   {
     id: 'ssg',
     icon: '⚡',
-    tag: 'Más popular',
-    title: 'Sitio Estático (SSG)',
-    subtitle: 'Velocidad imbatible',
-    description: 'Páginas pre-generadas que cargan al instante al no procesar datos en tiempo real. Máxima seguridad garantizada.',
+    tag: 'Más popular', enTag: 'Most Popular',
+    title: 'Sitio Estático (SSG)', enTitle: 'Static Site (SSG)',
+    subtitle: 'Velocidad imbatible', enSubtitle: 'Unbeatable Speed',
+    description: 'Páginas pre-generadas que cargan al instante al no procesar datos en tiempo real. Máxima seguridad garantizada.', enDescription: 'Pre-rendered pages that load instantly by not processing real-time data. Maximum security guaranteed.',
     benefits: [
-      'Carga en menos de 1 segundo',
-      'Seguridad impenetrable',
-      'Bajo costo de mantenimiento',
-      'Optimizado para Google',
+      { es: 'Carga en menos de 1 segundo', en: 'Loads in under 1 second' },
+      { es: 'Seguridad impenetrable', en: 'Impenetrable security' },
+      { es: 'Bajo costo de mantenimiento', en: 'Low maintenance cost' },
+      { es: 'Optimizado para Google', en: 'Optimized for Google' },
     ],
-    note: 'Ideal para portafolios, blogs y corporativos informativos.',
+    note: 'Ideal para portafolios, blogs y corporativos informativos.', enNote: 'Ideal for portfolios, blogs, and corporate sites.',
   },
   {
     id: 'landing',
     icon: '🎯',
-    tag: 'Conversión',
-    title: 'Landing Page',
-    subtitle: 'Tu vendedor 24/7',
-    description: 'Diseñada con un solo objetivo: convertir. Cada elemento dirige a tus visitantes hacia la acción deseada.',
+    tag: 'Conversión', enTag: 'Conversion',
+    title: 'Landing Page', enTitle: 'Landing Page',
+    subtitle: 'Tu vendedor 24/7', enSubtitle: 'Your 24/7 Salesperson',
+    description: 'Diseñada con un solo objetivo: convertir. Cada elemento dirige a tus visitantes hacia la acción deseada.', enDescription: 'Designed with one goal: convert. Every element drives your visitors towards the desired action.',
     benefits: [
-      'Enfoque puro en conversión',
-      'Integración inteligente con WhatsApp',
-      'Código QR listo para usar',
-      '1 año de hosting incluido',
+      { es: 'Enfoque puro en conversión', en: 'Pure conversion focus' },
+      { es: 'Integración inteligente con WhatsApp', en: 'Smart WhatsApp integration' },
+      { es: 'Código QR listo para usar', en: 'Ready-to-use QR Code' },
+      { es: '1 año de hosting incluido', en: '1 year of hosting included' },
     ],
-    note: 'Excelente para campañas de publicidad o captura de prospectos.',
+    note: 'Excelente para campañas de publicidad o captura de prospectos.', enNote: 'Excellent for ad campaigns or lead generation.',
   },
   {
     id: 'fullstack',
     icon: '⚙️',
-    tag: 'A medida',
-    title: 'Aplicación Fullstack',
-    subtitle: 'Plataformas complejas',
-    description: 'Sistemas a tu medida. Desarrollamos desde cero la lógica visual (Frontend) y los servidores (Backend) que requiere tu empresa.',
+    tag: 'A medida', enTag: 'Custom Built',
+    title: 'Aplicación Fullstack', enTitle: 'Fullstack App',
+    subtitle: 'Plataformas complejas', enSubtitle: 'Complex Platforms',
+    description: 'Sistemas a tu medida. Desarrollamos desde cero la lógica visual (Frontend) y los servidores (Backend) que requiere tu empresa.', enDescription: 'Tailor-made systems. We build from scratch the visual logic (Frontend) and the servers (Backend) your company requires.',
     benefits: [
-      'Cuentas de usuario y bases de datos',
-      'Pasarelas de pago online',
-      'Panel de administración privado',
-      'Conexión con otros sistemas (APIs)',
+      { es: 'Cuentas de usuario y bases de datos', en: 'User accounts and databases' },
+      { es: 'Pasarelas de pago online', en: 'Online payment gateways' },
+      { es: 'Panel de administración privado', en: 'Private admin dashboard' },
+      { es: 'Conexión con otros sistemas (APIs)', en: 'Connection with other systems (APIs)' },
     ],
-    note: 'Cotización personalizada según la complejidad necesaria.',
+    note: 'Cotización personalizada según la complejidad necesaria.', enNote: 'Custom quote based on necessary complexity.',
   },
 ];
 ---
@@ -60,11 +60,11 @@ const services = [
 
     <!-- Header -->
     <div class="text-center mb-14 md:mb-20">
-      <p class="section-label reveal">Nuestros Servicios</p>
-      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-4 reveal reveal-delay-1" style="color: var(--text);">
+      <p class="section-label reveal" data-en="Our Services">Nuestros Servicios</p>
+      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-4 reveal reveal-delay-1" style="color: var(--text);" data-en="What we build for you">
         Lo que construimos para ti
       </h2>
-      <p class="max-w-xl mx-auto text-base md:text-lg reveal reveal-delay-2" style="color: var(--muted);">
+      <p class="max-w-xl mx-auto text-base md:text-lg reveal reveal-delay-2" style="color: var(--muted);" data-en="No unnecessary technical jargon. We explain exactly what you get and how each service can grow your business.">
         Sin tecnicismos innecesarios. Te explicamos exactamente qué recibes y cómo cada servicio puede hacer crecer tu negocio.
       </p>
     </div>
@@ -82,17 +82,18 @@ const services = [
             <span
               class="text-xs font-semibold px-3 py-1 rounded-full"
               style="background: rgba(108,99,255,0.12); color: var(--accent); border: 1px solid rgba(108,99,255,0.2);"
+              data-en={s.enTag}
             >
               {s.tag}
             </span>
           </div>
 
           <!-- Title -->
-          <h3 class="font-display font-bold text-xl md:text-2xl mb-1" style="color: var(--text);">{s.title}</h3>
-          <p class="text-sm mb-3 font-medium" style="color: var(--accent);">{s.subtitle}</p>
+          <h3 class="font-display font-bold text-xl md:text-2xl mb-1" style="color: var(--text);" data-en={s.enTitle}>{s.title}</h3>
+          <p class="text-sm mb-3 font-medium" style="color: var(--accent);" data-en={s.enSubtitle}>{s.subtitle}</p>
 
           <!-- Description -->
-          <p class="text-sm md:text-base leading-relaxed mb-6" style="color: var(--muted);">{s.description}</p>
+          <p class="text-sm md:text-base leading-relaxed mb-6" style="color: var(--muted);" data-en={s.enDescription}>{s.description}</p>
 
           <!-- Benefits -->
           <ul class="flex flex-col gap-2 mb-7 flex-1">
@@ -101,7 +102,7 @@ const services = [
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="mt-0.5 flex-shrink-0">
                   <path d="M5 10L8.5 13.5L15 7" stroke="#6C63FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                {b}
+                <span data-en={b.en}>{b.es}</span>
               </li>
             ))}
           </ul>
@@ -110,6 +111,7 @@ const services = [
           <div
             class="mt-auto pt-5 text-xs font-medium"
             style="border-top: 1px solid var(--border); color: var(--muted);"
+            data-en={s.enNote}
           >
             {s.note}
           </div>
@@ -121,10 +123,10 @@ const services = [
     <div class="mt-14 rounded-2xl p-7 md:p-10 text-center reveal reveal-delay-2"
       style="background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(34,211,238,0.07)); border: 1px solid rgba(108,99,255,0.2);"
     >
-      <p class="font-display font-bold text-xl md:text-2xl mb-2" style="color: var(--text);">
+      <p class="font-display font-bold text-xl md:text-2xl mb-2" style="color: var(--text);" data-en="Don't know which service you need?">
         ¿No sabes cuál servicio necesitas?
       </p>
-      <p class="text-sm md:text-base mb-6" style="color: var(--muted);">
+      <p class="text-sm md:text-base mb-6" style="color: var(--muted);" data-en="Tell us your idea and we will help you find the perfect solution for your budget and goals.">
         Cuéntanos tu idea y te ayudamos a encontrar la solución perfecta para tu presupuesto y objetivos.
       </p>
       <a
@@ -133,6 +135,7 @@ const services = [
         rel="noopener noreferrer"
         id="services-consult-cta"
         class="btn-primary"
+        data-en="Get a free consultation"
       >
         Pide una asesoría gratuita
       </a>

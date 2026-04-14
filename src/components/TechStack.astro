@@ -1,41 +1,41 @@
 ---
 const techs = [
-  { name: 'Astro',       emoji: '🚀', desc: 'Framework SSG de nueva generación' },
-  { name: 'Tailwind CSS',emoji: '🎨', desc: 'Estilos modernos a máxima velocidad' },
-  { name: 'JavaScript',  emoji: '⚡', desc: 'Lógica web moderna y dinámica' },
-  { name: 'React',       emoji: '⚛️', desc: 'Interfaces interactivas de alto nivel' },
-  { name: 'Next.js',     emoji: '▲',  desc: 'Apps web fullstack escalables' },
-  { name: 'Node.js',     emoji: '🟢', desc: 'Back-end veloz y eficiente' },
-  { name: 'Git',         emoji: '📦', desc: 'Control de versiones profesional' },
-  { name: 'Netlify',     emoji: '☁️', desc: 'Despliegue global instantáneo' },
-  { name: 'Cloudflare',  emoji: '🛡️', desc: 'CDN de clase mundial' },
+  { name: 'Astro',       emoji: '🚀', desc: 'Framework SSG de nueva generación', enDesc: 'Next-gen SSG Framework' },
+  { name: 'Tailwind CSS',emoji: '🎨', desc: 'Estilos modernos a máxima velocidad', enDesc: 'Fast modern styling' },
+  { name: 'JavaScript',  emoji: '⚡', desc: 'Lógica web moderna y dinámica', enDesc: 'Modern & dynamic web logic' },
+  { name: 'React',       emoji: '⚛️', desc: 'Interfaces interactivas de alto nivel', enDesc: 'High-level interactive UI' },
+  { name: 'Next.js',     emoji: '▲',  desc: 'Apps web fullstack escalables', enDesc: 'Scalable fullstack apps' },
+  { name: 'Node.js',     emoji: '🟢', desc: 'Back-end veloz y eficiente', enDesc: 'Fast & efficient back-end' },
+  { name: 'Git',         emoji: '📦', desc: 'Control de versiones profesional', enDesc: 'Professional version control' },
+  { name: 'Netlify',     emoji: '☁️', desc: 'Despliegue global instantáneo', enDesc: 'Instant global deployment' },
+  { name: 'Cloudflare',  emoji: '🛡️', desc: 'CDN de clase mundial', enDesc: 'World-class CDN' },
 ];
 
 const steps = [
   {
     n: '01',
-    title: 'Estrategia',
-    desc: 'Entendemos tu negocio y objetivos antes de escribir la primera línea de código.',
+    title: 'Estrategia', enTitle: 'Strategy',
+    desc: 'Entendemos tu negocio y objetivos antes de escribir la primera línea de código.', enDesc: 'We understand your business and goals before writing a single line of code.',
   },
   {
     n: '02',
-    title: 'Diseño UX/UI',
-    desc: 'Interfaces modernas y fluidas, diseñadas específicamente para guiar al usuario.',
+    title: 'Diseño UX/UI', enTitle: 'UX/UI Design',
+    desc: 'Interfaces modernas y fluidas, diseñadas específicamente para guiar al usuario.', enDesc: 'Modern and fluid interfaces, designed specifically to guide the user.',
   },
   {
     n: '03',
-    title: 'Desarrollo',
-    desc: 'Código limpio y optimizado, garantizando máxima velocidad, seguridad y escalabilidad.',
+    title: 'Desarrollo', enTitle: 'Development',
+    desc: 'Código limpio y optimizado, garantizando máxima velocidad, seguridad y escalabilidad.', enDesc: 'Clean and optimized code, ensuring maximum speed, security, and scalability.',
   },
   {
     n: '04',
-    title: 'Despliegue',
-    desc: 'Tu sitio distribuido globalmente, asegurando tiempos de respuesta inmediatos.',
+    title: 'Despliegue', enTitle: 'Deployment',
+    desc: 'Tu sitio distribuido globalmente, asegurando tiempos de respuesta inmediatos.', enDesc: 'Your site distributed globally, ensuring instant response times.',
   },
   {
     n: '05',
-    title: 'Soporte',
-    desc: 'Nos mantenemos a tu lado con soporte continuo para que nada frene tu operación.',
+    title: 'Soporte', enTitle: 'Support',
+    desc: 'Nos mantenemos a tu lado con soporte continuo para que nada frene tu operación.', enDesc: 'We stay by your side with ongoing support so nothing slows down your operation.',
   },
 ];
 
@@ -57,11 +57,11 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
 
     <!-- Header -->
     <div class="text-center mb-14 md:mb-20">
-      <p class="section-label reveal">Tecnología</p>
-      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-4 reveal reveal-delay-1" style="color: var(--text);">
+      <p class="section-label reveal" data-en="Technology">Tecnología</p>
+      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-4 reveal reveal-delay-1" style="color: var(--text);" data-en="Our technology stack">
         Nuestro arsenal tecnológico
       </h2>
-      <p class="max-w-xl mx-auto text-base md:text-lg reveal reveal-delay-2" style="color: var(--muted);">
+      <p class="max-w-xl mx-auto text-base md:text-lg reveal reveal-delay-2" style="color: var(--muted);" data-en="We use the exact same tools that the world's largest tech companies use — we just put them to work for your business.">
         Usamos las mismas herramientas que emplean las empresas tech más grandes del mundo — solo que las ponemos a trabajar para tu negocio.
       </p>
     </div>
@@ -79,7 +79,7 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
             <span class="text-2xl" aria-hidden="true">{t.emoji}</span>
             <div>
               <p class="font-display font-semibold text-sm leading-tight" style="color: var(--text);">{t.name}</p>
-              <p class="text-xs" style="color: var(--muted);">{t.desc}</p>
+              <p class="text-xs" style="color: var(--muted);" data-en={t.enDesc}>{t.desc}</p>
             </div>
           </div>
         ))}
@@ -88,8 +88,8 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
 
     <!-- Workflow section -->
     <div class="text-center mb-12">
-      <p class="section-label reveal">Nuestro Proceso</p>
-      <h3 class="font-display font-black text-2xl sm:text-3xl md:text-4xl reveal reveal-delay-1" style="color: var(--text);">
+      <p class="section-label reveal" data-en="Our Process">Nuestro Proceso</p>
+      <h3 class="font-display font-black text-2xl sm:text-3xl md:text-4xl reveal reveal-delay-1" style="color: var(--text);" data-en="From idea to result in clear steps">
         De la idea al resultado en pasos claros
       </h3>
     </div>
@@ -100,8 +100,8 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
         <div class={`glow-card p-6 flex flex-col gap-4 reveal reveal-delay-${(i % 4) + 1}`} id={`step-${s.n}`}>
           <div class="step-num">{s.n}</div>
           <div>
-            <h4 class="font-display font-bold text-base mb-2 leading-snug" style="color: var(--text);">{s.title}</h4>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">{s.desc}</p>
+            <h4 class="font-display font-bold text-base mb-2 leading-snug" style="color: var(--text);" data-en={s.enTitle}>{s.title}</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);" data-en={s.enDesc}>{s.desc}</p>
           </div>
         </div>
       ))}

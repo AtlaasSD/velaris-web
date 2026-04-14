@@ -1,9 +1,9 @@
 ---
 const highlights = [
-  { icon: '🎓', title: 'Rigor Académico', desc: 'Formados en Ingeniería de Sistemas y Computación — aplicamos metodologías de alto nivel en cada proyecto.' },
-  { icon: '💡', title: 'Frescura Técnica', desc: 'Estudiamos y adoptamos las últimas tecnologías antes de que se vuelvan estándar en la industria.' },
-  { icon: '🌐', title: 'Estándares Internacionales', desc: 'Proyectos entregados siguiendo las mejores prácticas de la industria web global.' },
-  { icon: '🤝', title: 'Trato Directo', desc: 'Hablas directamente con quienes construyen tu proyecto. Sin intermediarios, sin malentendidos.' },
+  { icon: '🎓', title: 'Rigor Académico', enTitle: 'Academic Rigor', desc: 'Formados en Ingeniería de Sistemas y Computación — aplicamos metodologías de alto nivel en cada proyecto.', enDesc: 'Educated in Systems and Computer Engineering — we apply high-level methodologies in every project.' },
+  { icon: '💡', title: 'Frescura Técnica', enTitle: 'Technical Freshness', desc: 'Estudiamos y adoptamos las últimas tecnologías antes de que se vuelvan estándar en la industria.', enDesc: 'We study and adopt the latest technologies before they become industry standard.' },
+  { icon: '🌐', title: 'Estándares Internacionales', enTitle: 'International Standards', desc: 'Proyectos entregados siguiendo las mejores prácticas de la industria web global.', enDesc: 'Projects delivered following global web industry best practices.' },
+  { icon: '🤝', title: 'Trato Directo', enTitle: 'Direct Contact', desc: 'Hablas directamente con quienes construyen tu proyecto. Sin intermediarios, sin malentendidos.', enDesc: 'You speak directly with whoever builds your project. No intermediaries, no misunderstandings.' },
 ];
 
 import InteractiveDotGrid from './InteractiveDotGrid.astro';
@@ -24,8 +24,8 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
 
     <!-- Header -->
     <div class="text-center mb-14 md:mb-20">
-      <p class="section-label reveal">Quiénes Somos</p>
-      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-5 reveal reveal-delay-1" style="color: var(--text);">
+      <p class="section-label reveal" data-en="Who We Are">Quiénes Somos</p>
+      <h2 class="font-display font-black text-3xl sm:text-4xl md:text-5xl mb-5 reveal reveal-delay-1" style="color: var(--text);" data-en="The team behind Velaris">
         El equipo detrás de Velaris
       </h2>
     </div>
@@ -35,14 +35,14 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
 
       <!-- Left: text -->
       <div>
-        <p class="text-base md:text-lg leading-relaxed mb-6 reveal" style="color: var(--muted);">
+        <p class="text-base md:text-lg leading-relaxed mb-6 reveal" style="color: var(--muted);" data-en="We are a freelancer network formed by undergraduate students in <strong style='color: var(--text);'>Systems and Computer Engineering</strong> at the <strong style='color: var(--accent);'>Technological University of Pereira (UTP)</strong> — one of the best technological universities in the country.">
           Somos una red de freelancers formada por estudiantes de pregrado en
           <strong style="color: var(--text);">Ingeniería de Sistemas y Computación</strong>
           de la
           <strong style="color: var(--accent);">Universidad Tecnológica de Pereira (UTP)</strong>
           — una de las mejores universidades tecnológicas del país.
         </p>
-        <p class="text-base md:text-lg leading-relaxed mb-8 reveal reveal-delay-1" style="color: var(--muted);">
+        <p class="text-base md:text-lg leading-relaxed mb-8 reveal reveal-delay-1" style="color: var(--muted);" data-en="We combine academic freshness and cutting-edge knowledge with real practical professional web development experience. Every project we take is an opportunity to prove that quality isn't at odds with accessibility.">
           Combinamos la frescura académica y el conocimiento de vanguardia con experiencia práctica real en desarrollo web profesional. Cada proyecto que tomamos es una oportunidad de demostrar que la calidad no está reñida con la accesibilidad.
         </p>
 
@@ -53,8 +53,8 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
         >
           <span class="text-2xl" aria-hidden="true">🏛️</span>
           <div>
-            <p class="font-display font-bold text-sm" style="color: var(--text);">Universidad Tecnológica de Pereira</p>
-            <p class="text-xs" style="color: var(--muted);">Ingeniería de Sistemas y Computación</p>
+            <p class="font-display font-bold text-sm" style="color: var(--text);" data-en="Technological University of Pereira">Universidad Tecnológica de Pereira</p>
+            <p class="text-xs" style="color: var(--muted);" data-en="Systems and Computer Engineering">Ingeniería de Sistemas y Computación</p>
           </div>
         </div>
       </div>
@@ -67,8 +67,8 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
             class={`glow-card p-5 reveal reveal-delay-${i + 1}`}
           >
             <div class="text-2xl mb-3" aria-hidden="true">{h.icon}</div>
-            <h3 class="font-display font-bold text-base mb-1.5" style="color: var(--text);">{h.title}</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">{h.desc}</p>
+            <h3 class="font-display font-bold text-base mb-1.5" style="color: var(--text);" data-en={h.enTitle}>{h.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);" data-en={h.enDesc}>{h.desc}</p>
           </div>
         ))}
       </div>
@@ -79,10 +79,10 @@ import InteractiveDotGrid from './InteractiveDotGrid.astro';
       class="rounded-2xl p-7 md:p-10 text-center reveal reveal-delay-1"
       style="background: linear-gradient(135deg, rgba(108,99,255,0.09), rgba(34,211,238,0.05)); border: 1px solid rgba(108,99,255,0.18);"
     >
-      <p class="font-display font-bold text-xl md:text-2xl mb-3 gradient-text">
+      <p class="font-display font-bold text-xl md:text-2xl mb-3 gradient-text" data-en="&quot;High-level engineering, now within reach of your business.&quot;">
         "Ingeniería de alto nivel, ahora al alcance de tu negocio."
       </p>
-      <p class="text-sm md:text-base max-w-xl mx-auto" style="color: var(--muted);">
+      <p class="text-sm md:text-base max-w-xl mx-auto" style="color: var(--muted);" data-en="At Velaris, our mission is to provide entrepreneurs and emerging companies with the same technical infrastructure used by large corporations, optimizing every line of code for your growth.">
         En Velaris, nuestra misión es dotar a emprendedores y empresas emergentes con la misma infraestructura
         técnica que utilizan las grandes corporaciones, optimizando cada línea de código para tu crecimiento.
       </p>
