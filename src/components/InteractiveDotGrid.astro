@@ -5,6 +5,14 @@
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
+    var globalClientX = -9999;
+    var globalClientY = -9999;
+
+    window.addEventListener('mousemove', function(e) {
+      globalClientX = e.clientX;
+      globalClientY = e.clientY;
+    }, { passive: true });
+
     var canvases = document.querySelectorAll('.interactive-dot-grid');
     canvases.forEach(function(canvas) {
       var ctx = canvas.getContext('2d');
@@ -35,15 +43,19 @@
         init();
       });
       
-      parent.addEventListener('mousemove', function(e) {
-        var rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-      });
-      parent.addEventListener('mouseleave', function() {
-        mouse.x = -9999;
-        mouse.y = -9999;
-      });
+      function updateMousePos() {
+        if (globalClientX !== -9999 && globalClientY !== -9999) {
+          var rect = canvas.getBoundingClientRect();
+          mouse.x = globalClientX - rect.left;
+          mouse.y = globalClientY - rect.top;
+        } else {
+          mouse.x = -9999;
+          mouse.y = -9999;
+        }
+      }
+
+      window.addEventListener('mousemove', updateMousePos, { passive: true });
+      window.addEventListener('scroll', updateMousePos, { passive: true });
 
       function tick() {
         ctx.clearRect(0, 0, W, H);
