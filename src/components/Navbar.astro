@@ -26,7 +26,7 @@
     </ul>
 
     <!-- Right: theme toggle + CTA + mobile hamburger -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-1.5 md:gap-3">
 
       <!-- Theme Toggle — always visible in light & dark mode -->
       <button
@@ -82,20 +82,22 @@
       </div>
 
       <!-- CTA (desktop) -->
-      <a
-        href="https://wa.me/573171509336?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
-        target="_blank"
-        rel="noopener noreferrer"
-        id="nav-cta"
-        class="btn-primary hidden md:inline-flex text-sm px-5 py-2.5"
-        data-en="Get a Quote"
-      >
-        Cotiza ahora
-      </a>
+      <div class="hidden md:flex">
+        <a
+          href="https://wa.me/573171509336?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
+          target="_blank"
+          rel="noopener noreferrer"
+          id="nav-cta"
+          class="btn-primary text-sm px-5 py-2.5"
+          data-en="Get a Quote"
+        >
+          Cotiza ahora
+        </a>
+      </div>
 
       <!-- Mobile hamburger -->
       <button id="mobile-menu-btn" aria-label="Menú"
-        class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-lg"
+        class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-lg pr-0"
         style="background: var(--card); border: 1px solid var(--border);">
         <span class="block h-0.5 w-5 rounded-full transition-all duration-300" style="background: var(--text)"></span>
         <span class="block h-0.5 w-5 rounded-full transition-all duration-300" style="background: var(--text)"></span>
