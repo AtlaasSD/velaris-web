@@ -82,13 +82,13 @@
       </div>
 
       <!-- CTA (desktop) -->
-      <div class="hidden md:flex">
+      <div class="mobile-hide">
         <a
           href="https://wa.me/573171509336?text=Hola%2C%20me%20interesa%20cotizar%20un%20proyecto%20con%20Velaris."
           target="_blank"
           rel="noopener noreferrer"
           id="nav-cta"
-          class="btn-primary text-sm px-5 py-2.5"
+          class="btn-primary text-sm px-4 py-2"
           data-en="Get a Quote"
         >
           Cotiza ahora
@@ -97,7 +97,7 @@
 
       <!-- Mobile hamburger -->
       <button id="mobile-menu-btn" aria-label="Menú"
-        class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-lg pr-0"
+        class="md:hidden flex-shrink-0 w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-lg"
         style="background: var(--card); border: 1px solid var(--border);">
         <span class="block h-0.5 w-5 rounded-full transition-all duration-300" style="background: var(--text)"></span>
         <span class="block h-0.5 w-5 rounded-full transition-all duration-300" style="background: var(--text)"></span>
@@ -127,6 +127,13 @@
   .nav-link:hover       { color: var(--accent) !important; }
   .mobile-nav-link:hover { color: var(--accent) !important; }
   #navbar               { background: transparent; }
+  
+  @media (max-width: 768px) {
+    .mobile-hide { display: none !important; }
+  }
+  @media (min-width: 769px) {
+    .mobile-hide { display: flex; }
+  }
 </style>
 
 <script is:inline>
